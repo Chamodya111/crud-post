@@ -10,9 +10,9 @@ class PostController extends Controller
     public function store(Request $request)
     {
         Post::create([
-            'user_id'=>auth()->user()->id,
-            'title'=>$request->title,
-            'description'=>$request->description
+            'user_id' => auth()->user()->id,
+            'title' => $request->title,
+            'description' => $request->description
         ]);
 
         return back();
@@ -24,5 +24,22 @@ class PostController extends Controller
         $post = Post::findOrFail($postId);
 
         return view('posts.show', compact('post'));
+    }
+
+    public function edit($postId)
+    {
+        $post = Post::findOrFail($postId);
+        return view('posts.edit', compact('post'));
+    }
+
+    public function update($postId, Request $request)
+    {
+        Post::findOrFail($postId)->update($request->all());
+        return redirect(route('posts/all'));
+    }
+
+    public function delete($postDelId){
+        Post::findOrFail($postDelId)->delete();
+        return redirect(route('posts/all'));
     }
 }
