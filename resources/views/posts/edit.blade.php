@@ -8,11 +8,6 @@
                     <div class="card-header">{{ __('Update Post') }}</div>
 
                     <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
 
                         <form method="post" action="{{ route('posts/update', $post->id) }}">
                             @csrf

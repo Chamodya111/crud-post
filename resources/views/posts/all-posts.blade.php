@@ -2,6 +2,11 @@
 @section('content')
     <div class="container my-3">
         <div class="row">
+            @if (session('status'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('status') }}
+                </div>
+            @endif
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
