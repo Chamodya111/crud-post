@@ -14,7 +14,7 @@
                             </div>
                         @endif
 
-                        <form method="post" action="{{ route('posts/store') }}">
+                        <form method="post" action="{{ route('posts/store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group mb-3">
                                 <label class="form-label">Post Title</label>
@@ -23,6 +23,9 @@
                             <div class="form-group mb-3">
                                 <label class="form-label">Post Description</label>
                                 <textarea name="description" class="form-control" placeholder="Enter post description" rows="10" required></textarea>
+                            </div>
+                            <div class="form-group mb-3">
+                                <input class="form-control" name="thumbnail" type="file"/>
                             </div>
                             <button type="submit" class="btn btn-primary">Post</button>
                         </form>
